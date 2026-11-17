@@ -10,7 +10,9 @@ The core skill is platform-neutral and text-first. Optional file access, code ex
 
 The response style is intentionally concise. It avoids generic tutorials, repeated disclaimers, forced headings, fabricated certainty, and unnecessary rewrites of the learner's code.
 
-Current skill version: **3.1.3**.
+Concise mode is the default. There is no platform-specific toggle to install: use the skill normally and it starts concise. A one-line reminder at the end tells users they can switch to `详细模式` or `教学模式`. Detailed and teaching responses do not repeat that reminder.
+
+Current skill version: **3.2.1**.
 
 ## 中文说明
 
@@ -57,6 +59,17 @@ Python 学习诊断陪练是一个跨平台的 Agent Skill。它不绑定特定�
 - 答案足够时停止，不为了显得完整而追加长总结。
 
 实际测试中，一个简单的 `NameError` 回答只包含两句解释和一行修改；一个范围明确的修复只改动了 `x == ''` 到 `x.strip() == ''`，没有改动命名、格式或增加无关功能。
+
+### 默认简洁与模式切换
+
+- 安装后默认就是简洁模式，不需要额外按钮；
+- 简洁回答末尾只加一句：`想深入理解，可以回复“详细模式”或“教学模式”。`
+- `详细模式`：展开原理和更多解释；
+- `教学模式`：引导学生自己写、预测和修正；
+- 如果本轮已经详细讲解，不再追加模式提醒；
+- 用户明确说“不要提醒”时省略这句话。
+
+Skill 不能向 TeleAgent 添加原生 UI 开关；这是平台界面限制，不是可以通过 `SKILL.md` 绕过的能力。
 
 ### 通用安装
 

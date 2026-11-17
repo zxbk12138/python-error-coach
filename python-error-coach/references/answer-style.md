@@ -117,5 +117,7 @@ Once the requested problem is answered:
 - do not append five follow-up suggestions;
 - do not repeat the answer in a summary;
 - do not manufacture a learning report;
-- at most, offer one useful next check.
+- in concise mode, add exactly one short line: “想深入理解，可以回复‘详细模式’或‘教学模式’。”
+- do not add that reminder after a detailed or teaching response;
+- if the user explicitly says not to remind them, omit it.
 
