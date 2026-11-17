@@ -10,7 +10,7 @@ The core skill is platform-neutral and text-first. Optional file access, code ex
 
 The response style is intentionally concise. It avoids generic tutorials, repeated disclaimers, forced headings, fabricated certainty, and unnecessary rewrites of the learner's code.
 
-Current skill version: **3.1.0**.
+Current skill version: **3.1.3**.
 
 ## 中文说明
 
@@ -45,6 +45,9 @@ Python 学习诊断陪练是一个跨平台的 Agent Skill。它不绑定特定�
 作品不把“AI 味”只当成措辞问题，而是约束常见行为：
 
 - 简单问题直接说错在哪，不强制套“背景、原因、建议、总结”模板；
+- 单点代码修复统一用“问题一句话、代码块、验证一句话”，避免密集行内代码；
+- 简单修复不输出测试表、执行日志或多组案例矩阵；
+- 一眼可确认的修复默认不运行代码，避免把简单回答扩展成测试报告；
 - 不重复用户原话，不加入空泛表扬和客套话；
 - 一处信息足够时不发起问卷式追问；
 - 用户明确说“直接修”时先给最小修复；

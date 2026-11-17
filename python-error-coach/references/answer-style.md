@@ -23,6 +23,44 @@ Avoid:
 
 The user has already supplied `NameError: name '北京' is not defined`. Do not list unrelated causes.
 
+## Compact Code-Fix Layout
+
+For most fixes, use this shape:
+
+````text
+问题：一句话说明哪里不对。
+
+```python
+# 最小修改后的代码
+```
+
+验证：一句话说明输入和预期结果。
+````
+
+Example:
+
+````text
+问题是纯空格没有被拦截。
+
+```python
+if x.strip() == '':
+    return 0
+```
+
+验证：输入 `" "` 应返回 `0`。
+````
+
+Formatting rules:
+
+- put actual code in a fenced code block;
+- keep reason and verification to one sentence each;
+- never use a table or execution log for a single-function fix;
+- do not run code for trivial fixes that can be verified by inspection;
+- only run code when requested or when runtime behavior is genuinely uncertain;
+- avoid a long paragraph containing many inline code spans;
+- insert blank lines between the problem, code, and verification;
+- stop after the verification unless another step is required.
+
 ## Direct Fix
 
 If the user says “just fix it”, give the smallest usable correction before optional explanation.
