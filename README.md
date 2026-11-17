@@ -1,0 +1,168 @@
+# Python Learning Diagnosis Coach
+
+[中文说明](#中文说明) · [English overview](#english-overview) · [MIT License](LICENSE)
+
+An adaptive Python coaching skill for TeleAgent and compatible `SKILL.md` agents.
+
+It diagnoses real Python errors, teaches one small step at a time, verifies the fix, and checks whether the learner actually understood it.
+
+> This is a community learning project. It is not an official TeleAgent product.
+
+## 中文说明
+
+### 项目简介
+
+Python 学习诊断陪练是一个面向不同水平 Python 学习者的 Agent Skill。它不使用固定难度的“万能讲解”，而是根据学习者实际提交的代码、报错、输入输出和学习目标动态调整。
+
+核心流程：
+
+> 识别事实 → 建立少量假设 → 选择一个区分性测试 → 根据反馈更新判断 → 验证修复 → 检查是否真正理解
+
+### 三种模式
+
+- **修错**：用户想尽快解决代码问题。
+- **教学**：用户希望自己写、预测和解释代码，而不是直接拿答案。
+- **复习测验**：用零提示题目检查掌握程度。
+
+### 主要能力
+
+- 从零基础扩展到通用 Python 中阶；
+- 一次只给一个主要下一步；
+- 根据新反馈修改或撤回原有判断；
+- “我懂了”必须通过解释、预测或变式练习验证；
+- 没有看到运行结果时不声称代码运行成功；
+- 不展示内部思维链，只输出证据摘要；
+- 第三方库信息不足时不编造 API；
+- 内置行为评测，避免用固定话术替代真实效果。
+
+### 安装
+
+1. 下载 [`dist/python-error-coach.zip`](dist/python-error-coach.zip)。
+2. 在 TeleAgent 的“技能广场”中选择“导入技能”。
+3. 上传 ZIP 并通过安全审查。
+4. 在对话中输入 `@Python学习诊断陪练`，或直接描述 Python 学习问题。
+
+ZIP 解压后的第一层是：
+
+```text
+python-error-coach/
+└── SKILL.md
+```
+
+### 使用示例
+
+```text
+我是零基础：
+
+city = 北京
+print(city)
+
+报错：
+NameError: name '北京' is not defined
+
+请一次只给一个检查点。
+```
+
+预期行为：
+
+- 指出无引号的“北京”会被 Python 当成变量名；
+- 不一次性讲完整变量章节；
+- 给出可以立即验证的下一步。
+
+另一个示例：
+
+```text
+我已经懂了 f-string，直接下一课。
+```
+
+预期行为：
+
+- 不把“我懂了”直接当作掌握证据；
+- 只给一个很短的预测题或迁移题；
+- 用户只求快速前进时不展开长测验。
+
+### 仓库结构
+
+```text
+.
+├── python-error-coach/
+│   ├── SKILL.md
+│   ├── assets/
+│   ├── evals/
+│   └── references/
+├── demo_cases/
+├── docs/
+├── dist/
+│   └── python-error-coach.zip
+└── LICENSE
+```
+
+### 参考资料
+
+本项目的设计参考了以下公开项目，但所有规则与文本均为重新整理：
+
+- [OpenAI Skills](https://github.com/openai/skills)
+- [AI Tutor Skill](https://github.com/Bhala-Srinivash/agent-tutor-skill)，MIT
+- [CodeTrain](https://github.com/InferHaven/agent-skills/tree/main/codetrain)，Apache-2.0
+- [Structured Root-Cause Research](https://github.com/meiiie/structured-root-cause-research-skill)，MIT
+- [Feynman Tutor](https://github.com/koukekoukej-glitch/feynman-tutor)，MIT
+- Runoob Python 教程仅作为章节索引
+
+更完整的提炼见 [`docs/GitHub参考提炼.md`](docs/GitHub参考提炼.md)。
+
+### 已知边界
+
+- 只覆盖通用 Python；第三方框架和库需要版本信息和完整 traceback。
+- 不执行用户代码。
+- 不替代教师、助教或官方文档。
+- 不同 Agent 模型执行 `SKILL.md` 的效果可能存在差异。
+
+### 验证
+
+- 在 TeleAgent 3.0.1 中完成导入和安全审查；
+- 覆盖零基础、类型错误、函数、生成器、未知库、多轮反馈、掌握验证和直接修复等场景；
+- 详细记录见 [`docs/TeleAgent实测报告.md`](docs/TeleAgent实测报告.md)。
+
+## English overview
+
+Python Learning Diagnosis Coach is an adaptive tutoring skill for Python beginners and intermediate learners.
+
+It:
+
+- separates observed facts from guesses;
+- keeps a small set of competing hypotheses;
+- proposes one discriminating next step at a time;
+- updates its diagnosis when the learner provides new evidence;
+- distinguishes “fix this for me” from “teach me how”;
+- verifies understanding instead of accepting “I get it”;
+- avoids inventing third-party APIs when versions or tracebacks are missing.
+
+The packaged skill is available at [`dist/python-error-coach.zip`](dist/python-error-coach.zip).
+
+## Development and evaluation
+
+The main instruction file is [`python-error-coach/SKILL.md`](python-error-coach/SKILL.md).
+
+Behavioral evaluation cases are in [`python-error-coach/evals/cases.json`](python-error-coach/evals/cases.json). The goal is to compare observable behavior, not exact wording.
+
+The real classroom example uses the before/after programs in [`demo_cases/`](demo_cases/):
+
+- `classroom-loop-before.py`
+- `classroom-loop-after.py`
+
+## Contributing
+
+Please keep contributions focused on general Python learning and diagnosis.
+
+1. Add or update a behavioral evaluation case.
+2. Reproduce the current behavior.
+3. Make the smallest instruction change that fixes the observed failure.
+4. Verify the skill in a real Agent environment.
+5. Document any new limitation.
+
+Do not add personal data, credentials, platform tokens, or copied third-party skill text.
+
+## License
+
+MIT License. See [LICENSE](LICENSE).
+
