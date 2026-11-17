@@ -12,7 +12,7 @@ The response style is intentionally concise. It avoids generic tutorials, repeat
 
 Concise mode is the default. There is no platform-specific toggle to install: use the skill normally and it starts concise. A one-line reminder at the end tells users they can switch to `详细模式` or `教学模式`. Detailed and teaching responses do not repeat that reminder.
 
-Current skill version: **3.2.1**.
+Current skill version: **3.3.0**.
 
 ## 中文说明
 
@@ -50,6 +50,7 @@ Python 学习诊断陪练是一个跨平台的 Agent Skill。它不绑定特定�
 - 单点代码修复统一用“问题一句话、代码块、验证一句话”，避免密集行内代码；
 - 简单修复不输出测试表、执行日志或多组案例矩阵；
 - 一眼可确认的修复默认不运行代码，避免把简单回答扩展成测试报告；
+- 对常见单点错误走快速路径，不加载参考资料或建立多个假设；
 - 不重复用户原话，不加入空泛表扬和客套话；
 - 一处信息足够时不发起问卷式追问；
 - 用户明确说“直接修”时先给最小修复；
@@ -189,6 +190,8 @@ The main instruction file is [`python-error-coach/SKILL.md`](python-error-coach/
 Behavioral evaluation cases are in [`python-error-coach/evals/cases.json`](python-error-coach/evals/cases.json). The goal is to compare observable behavior, not exact wording.
 
 The public skill uses standard Agent Skills frontmatter. Platform-specific UI metadata is isolated in `agents/openai.yaml`.
+
+Performance and competition-demo guidance is documented in [`docs/性能优化与比赛演示.md`](docs/性能优化与比赛演示.md).
 
 The real classroom example uses the before/after programs in [`demo_cases/`](demo_cases/):
 

@@ -4,7 +4,7 @@ description: Diagnose, teach, review, and plan general Python work using the use
 license: MIT
 metadata:
   display_name: Python Learning Diagnosis Coach
-  version: 3.2.1
+  version: 3.3.0
   author: zxbk12138
   category: education
   languages: English and Chinese
@@ -61,6 +61,29 @@ metadata:
 > 想深入理解，可以回复“详细模式”或“教学模式”。
 
 提醒只能占一行，不单独加标题，不扩展成建议列表。若本轮已经给出详细解释或进入教学模式，则不要再加这句话。
+
+## 快速路径
+
+先做一次低成本匹配。若错误信息、代码和用户目标没有冲突，且属于以下单点问题，直接修复：
+
+- `SyntaxError: expected ':'`：检查 `if`、`for`、`def`、`class`、`else` 等语句末尾；
+- `IndentationError`：比较出错行与相邻代码块缩进；
+- `NameError`：检查文字是否缺引号、变量是否先赋值、名称是否拼错；
+- 字符串与整数相加：检查 `input()` 返回类型或显式转换；
+- f-string 原样输出 `{}`：检查引号前的 `f` 和花括号；
+- `IndexError`：检查索引是否从 0 开始、边界是否越界；
+- 函数调用后得到 `None`：检查函数是否缺少 `return`；
+- `KeyError`：检查字典真实键名。
+
+快速路径中：
+
+1. 不运行代码；
+2. 不加载参考资料；
+3. 不建立多个假设；
+4. 不展开教学；
+5. 直接给出确定的单点修复。
+
+只有两个以上合理解释、外部库问题、运行结果依赖真实环境，或用户要求深入分析时，才进入完整诊断流程。
 
 ### 排版规则
 
