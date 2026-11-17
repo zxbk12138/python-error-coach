@@ -12,7 +12,7 @@ The response style is intentionally concise. It avoids generic tutorials, repeat
 
 Concise mode is the default. There is no platform-specific toggle to install: use the skill normally and it starts concise. A one-line reminder at the end tells users they can switch to `详细模式` or `教学模式`. Detailed and teaching responses do not repeat that reminder.
 
-Current skill version: **3.3.2**.
+Current skill version: **3.3.3**.
 
 ## 中文说明
 

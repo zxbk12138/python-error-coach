@@ -4,7 +4,7 @@ description: Diagnose, teach, review, and plan general Python work using the use
 license: MIT
 metadata:
   display_name: Python Learning Diagnosis Coach
-  version: 3.3.2
+  version: 3.3.3
   author: zxbk12138
   category: education
   languages: English and Chinese
@@ -409,4 +409,6 @@ Runoob Python 教程、课程材料和公开 Skill 项目可以作为章节地�
 需要调整不同水平的具体话术时读取 `references/adaptive-levels.md`。
 
 生成学习记录时读取 `assets/error-card.md`。
+
+需要阶段性跟踪学习者水平时读取 `assets/learning-profile.md`。未经用户明确要求，不保存或填写个人信息。
 
