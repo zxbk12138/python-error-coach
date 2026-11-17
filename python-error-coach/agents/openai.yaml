@@ -1,0 +1,9 @@
+interface:
+  display_name: "Python Learning Diagnosis Coach"
+  short_description: "Adaptive Python debugging, tutoring, and mastery checks"
+  brand_color: "#2563EB"
+  default_prompt: "Use $python-error-coach to diagnose this Python problem and give one evidence-based next step."
+
+policy:
+  allow_implicit_invocation: true
+

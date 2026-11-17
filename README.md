@@ -2,31 +2,32 @@
 
 [中文说明](#中文说明) · [English overview](#english-overview) · [MIT License](LICENSE)
 
-An adaptive Python coaching skill for TeleAgent and compatible `SKILL.md` agents.
+A portable Python tutoring and debugging skill for any `SKILL.md`-compatible agent.
 
-It diagnoses real Python errors, teaches one small step at a time, verifies the fix, and checks whether the learner actually understood it.
+It diagnoses real Python problems, teaches one small step at a time, verifies fixes, and checks whether the learner actually understood the change.
 
-> This is a community learning project. It is not an official TeleAgent product.
+The core skill is platform-neutral and text-first. Optional file access, code execution, web lookup, or UI features are used only when the host agent actually provides them.
 
 ## 中文说明
 
 ### 项目简介
 
-Python 学习诊断陪练是一个面向不同水平 Python 学习者的 Agent Skill。它不使用固定难度的“万能讲解”，而是根据学习者实际提交的代码、报错、输入输出和学习目标动态调整。
+Python 学习诊断陪练是一个跨平台的 Agent Skill。它不绑定特定客户端、模型或界面，也不使用固定难度的“万能讲解”，而是根据实际代码、报错、输入输出和学习目标动态调整。
 
 核心流程：
 
 > 识别事实 → 建立少量假设 → 选择一个区分性测试 → 根据反馈更新判断 → 验证修复 → 检查是否真正理解
 
-### 三种模式
+### 四种工作模式
 
 - **修错**：用户想尽快解决代码问题。
 - **教学**：用户希望自己写、预测和解释代码，而不是直接拿答案。
 - **复习测验**：用零提示题目检查掌握程度。
+- **规划或代码审查**：整理下一步学习路径，或分析已有代码的质量、边界与风险。
 
 ### 主要能力
 
-- 从零基础扩展到通用 Python 中阶；
+- 面向不同水平，覆盖 Python 入门、核心语法、常用标准库和进阶语言特性；
 - 一次只给一个主要下一步；
 - 根据新反馈修改或撤回原有判断；
 - “我懂了”必须通过解释、预测或变式练习验证；
@@ -35,12 +36,14 @@ Python 学习诊断陪练是一个面向不同水平 Python 学习者的 Agent S
 - 第三方库信息不足时不编造 API；
 - 内置行为评测，避免用固定话术替代真实效果。
 
-### 安装
+### 通用安装
 
 1. 下载 [`dist/python-error-coach.zip`](dist/python-error-coach.zip)。
-2. 在 TeleAgent 的“技能广场”中选择“导入技能”。
-3. 上传 ZIP 并通过安全审查。
-4. 在对话中输入 `@Python学习诊断陪练`，或直接描述 Python 学习问题。
+2. 如果宿主 Agent 支持技能导入，直接导入 ZIP。
+3. 如果宿主 Agent 使用本地技能目录，将解压后的 `python-error-coach/` 放入其 Skills 目录。
+4. 显式调用 `$python-error-coach`，或让宿主根据描述自动选择。
+
+TeleAgent 等支持 ZIP 导入的平台也可以上传同一个包；平台专属元数据不是运行前提。
 
 ZIP 解压后的第一层是：
 
@@ -87,6 +90,7 @@ NameError: name '北京' is not defined
 .
 ├── python-error-coach/
 │   ├── SKILL.md
+│   ├── agents/
 │   ├── assets/
 │   ├── evals/
 │   └── references/
@@ -119,13 +123,14 @@ NameError: name '北京' is not defined
 
 ### 验证
 
-- 在 TeleAgent 3.0.1 中完成导入和安全审查；
+- 通过 OpenAI `skill-creator` 的 `quick_validate.py` 校验；
+- 在 TeleAgent 3.0.1 中完成一次平台兼容性验证；
 - 覆盖零基础、类型错误、函数、生成器、未知库、多轮反馈、掌握验证和直接修复等场景；
 - 详细记录见 [`docs/TeleAgent实测报告.md`](docs/TeleAgent实测报告.md)。
 
 ## English overview
 
-Python Learning Diagnosis Coach is an adaptive tutoring skill for Python beginners and intermediate learners.
+Python Learning Diagnosis Coach is a portable tutoring skill for general Python work across skill levels.
 
 It:
 
@@ -135,6 +140,7 @@ It:
 - updates its diagnosis when the learner provides new evidence;
 - distinguishes “fix this for me” from “teach me how”;
 - verifies understanding instead of accepting “I get it”;
+- supports teaching, debugging, review, assessment, and learning-path planning;
 - avoids inventing third-party APIs when versions or tracebacks are missing.
 
 The packaged skill is available at [`dist/python-error-coach.zip`](dist/python-error-coach.zip).
@@ -144,6 +150,8 @@ The packaged skill is available at [`dist/python-error-coach.zip`](dist/python-e
 The main instruction file is [`python-error-coach/SKILL.md`](python-error-coach/SKILL.md).
 
 Behavioral evaluation cases are in [`python-error-coach/evals/cases.json`](python-error-coach/evals/cases.json). The goal is to compare observable behavior, not exact wording.
+
+The public skill uses standard Agent Skills frontmatter. Platform-specific UI metadata is isolated in `agents/openai.yaml`.
 
 The real classroom example uses the before/after programs in [`demo_cases/`](demo_cases/):
 
