@@ -229,6 +229,21 @@
       "建立多个竞争假设",
       "输出测试表"
     ]
+  },
+  {
+    "id": "no-unsolicited-interactive-question",
+    "turns": [
+      "age=input(); age+1 报 TypeError。直接修，不要弹问答。"
+    ],
+    "must": [
+      "直接解释 input 返回字符串",
+      "用普通文字给出最小修改和验证"
+    ],
+    "must_not": [
+      "调用交互式问答或问卷组件",
+      "要求用户必须回答正确答案",
+      "在回答前阻塞等待确认"
+    ]
   }
 ]
 
