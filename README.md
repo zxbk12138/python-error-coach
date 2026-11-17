@@ -8,6 +8,10 @@ It diagnoses real Python problems, teaches one small step at a time, verifies fi
 
 The core skill is platform-neutral and text-first. Optional file access, code execution, web lookup, or UI features are used only when the host agent actually provides them.
 
+The response style is intentionally concise. It avoids generic tutorials, repeated disclaimers, forced headings, fabricated certainty, and unnecessary rewrites of the learner's code.
+
+Current skill version: **3.1.0**.
+
 ## 中文说明
 
 ### 项目简介
@@ -35,6 +39,21 @@ Python 学习诊断陪练是一个跨平台的 Agent Skill。它不绑定特定�
 - 不展示内部思维链，只输出证据摘要；
 - 第三方库信息不足时不编造 API；
 - 内置行为评测，避免用固定话术替代真实效果。
+
+### 减少“AI 味”
+
+作品不把“AI 味”只当成措辞问题，而是约束常见行为：
+
+- 简单问题直接说错在哪，不强制套“背景、原因、建议、总结”模板；
+- 不重复用户原话，不加入空泛表扬和客套话；
+- 一处信息足够时不发起问卷式追问；
+- 用户明确说“直接修”时先给最小修复；
+- 不添加未请求的抽象层、类、配置项或无关重构；
+- 只改与当前问题有关的代码，发现其他问题只说明，不顺手修改；
+- 通过复现、最小修改和验证证明问题解决；
+- 答案足够时停止，不为了显得完整而追加长总结。
+
+实际测试中，一个简单的 `NameError` 回答只包含两句解释和一行修改；一个范围明确的修复只改动了 `x == ''` 到 `x.strip() == ''`，没有改动命名、格式或增加无关功能。
 
 ### 通用安装
 
@@ -110,6 +129,8 @@ NameError: name '北京' is not defined
 - [CodeTrain](https://github.com/InferHaven/agent-skills/tree/main/codetrain)，Apache-2.0
 - [Structured Root-Cause Research](https://github.com/meiiie/structured-root-cause-research-skill)，MIT
 - [Feynman Tutor](https://github.com/koukekoukej-glitch/feynman-tutor)，MIT
+- [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills)，MIT
+- [小黑盒社区关于 Skill 与 AI 协作的讨论](https://www.xiaoheihe.cn/app/bbs/link/8a3871e370bb)
 - Runoob Python 教程仅作为章节索引
 
 更完整的提炼见 [`docs/GitHub参考提炼.md`](docs/GitHub参考提炼.md)。

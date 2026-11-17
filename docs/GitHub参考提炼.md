@@ -18,6 +18,11 @@
 | [CodeTrain](https://github.com/InferHaven/agent-skills/tree/main/codetrain) | Apache-2.0 | 修错与教学模式区分、一次小步、提示逐级增加、运行真实性 |
 | [Structured Root-Cause Research](https://github.com/meiiie/structured-root-cause-research-skill) | MIT | 事实与推断分离、竞争假设、区分性测试、证据不足保留不确定性 |
 | [Feynman Tutor](https://github.com/koukekoukej-glitch/feynman-tutor) | MIT | 使用学习者语言、不为具体代码硬造类比、根据意图调整对话深度 |
+| [Karpathy Guidelines](https://github.com/multica-ai/andrej-karpathy-skills) | MIT | 显式假设、最小实现、外科式修改、可验证目标 |
+
+小黑盒帖子参考：
+
+<https://www.xiaoheihe.cn/app/bbs/link/8a3871e370bb>
 
 ## 已融入作品
 
@@ -55,6 +60,17 @@
 ### 6. 渐进式披露
 
 `SKILL.md` 保留核心模式、边界和流程；详细教学法、错因索引、水平话术和来源说明放入 `references/`，只在对应场景读取。另加入 `evals/` 保存行为验收用例。
+
+### 7. 减少 AI 味
+
+- 简单错误直接指出行、变量和修改，不先套完整报告模板；
+- 不用空泛表扬、重复用户原话或宣告自己的分析流程；
+- 不把一句问题扩成问卷，能合理假设时先做一个最小验证；
+- 用户只说“修好”时，给最小可运行修改；
+- 不新增未请求的抽象、类、配置或框架；
+- 只改与目标直接相关的代码，其他问题只说明；
+- 回答足够时停止，不追加机械总结和五个建议；
+- 简单问题用自然段落，复杂问题才使用结构化格式。
 
 ## 未采用
 
